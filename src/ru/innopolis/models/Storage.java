@@ -1,5 +1,7 @@
 package ru.innopolis.models;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import java.util.Map;
 public class Storage {
 
     private Map<Integer, Integer> st = new HashMap<>();
+    private static Boolean stop = false;
 
     synchronized public void add() {
 
@@ -25,6 +28,10 @@ public class Storage {
 
                 st.put(num, st.get(num) + 1);
 
+            }
+
+            if(st.get(num) == 5) {
+                this.stop = true;
             }
 
             //System.out.println(num + " " + st.get(num));
